@@ -12,7 +12,7 @@ const goToAbout = () => {
 
 <template>
   <h1>Home Page</h1>
-  <p>Count: {{ counter }}</p>
-  <button @click="counter++">Increment</button>
-  <button @click="goToAbout">Go to About</button>
+  <!-- <p>Count: {{ counter }}</p> -->
+  <!-- <button @click="counter++">Increment</button>
+  <button @click="goToAbout">Go to About</button> -->
 </template>

@@ -40,21 +40,26 @@ function renderBarChart(container) {
   chart
   .interval()
   .scale('x', {
-    range: [0.15, 1.1],
-    marginRatio: -1
+    type: 'ordinal',
+    range: [0.15, 1],
+    marginRatio: 0.2
+  })
+  .axis('x', {
+    label: { autoRotate: false },
+    tickCount: data.length // 与数据条目数一致
   })
   .data(data)
   .encode('x', '类型')
   .encode('y', '次数')
-  .style('width',40)
+  .style('width',50)
   .encode('color', 'name')
   .transform({ type: 'stackY' })
   .label({
     text: 'name',
     position: 'bottom',
     style: {
-      dx: -45,
-      dy: -10,
+      // dx: -45,
+      // dy: -10,
       rotate: 0,
       textAlign: 'center'
     },
@@ -63,6 +68,7 @@ function renderBarChart(container) {
       cfg: { showAll: true }
     }
   })
+  
   .interaction('elementHighlight', { background: true });
 
 
