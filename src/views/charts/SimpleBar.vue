@@ -1,12 +1,18 @@
 <template>
-  <div>
+  <div style="width: 22%;
+    margin-left: auto;
+    margin-right: auto; ">
     <div ref="container"></div>
     <button @click="onClick">Update Data</button>
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
 import { Chart } from '@antv/g2';
+
+const container = ref(null);
+const chart = ref(null);
 
 function renderBarChart(container) {
   const chart = new Chart({
@@ -53,17 +59,11 @@ function updateBarChart(chart) {
   chart.render();
 }
 
-export default {
-  name: 'G2Demo',
-  props: {},
-  mounted() {
-    // 保存图表实例
-    this.chart = renderBarChart(this.$refs.container);
-  },
-  methods: {
-    onClick() {
-      updateBarChart(this.chart);
-    },
-  },
-};
+onMounted(() => {
+  chart.value = renderBarChart(container.value);
+});
+
+function onClick() {
+  updateBarChart(chart.value);
+}
 </script>
